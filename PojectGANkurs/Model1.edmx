@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище registrGANModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cabin">
+          <Key>
+            <PropertyRef Name="idcab" />
+          </Key>
+          <Property Name="idcab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numbercab" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="idisease" />
+          </Key>
+          <Property Name="idisease" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Symptoms" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="iddoctors" />
+          </Key>
+          <Property Name="iddoctors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idcabin" Type="int" />
+          <Property Name="Staj" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctorsappoin">
+          <Key>
+            <PropertyRef Name="iddoctorappoint" />
+          </Key>
+          <Property Name="iddoctorappoint" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idregistr" Type="int" Nullable="false" />
+          <Property Name="Dateappoint" Type="date" Nullable="false" />
+          <Property Name="idDisease" Type="int" Nullable="false" />
+          <Property Name="idMedicament" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Medicamentquantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicament">
+          <Key>
+            <PropertyRef Name="idMedicament" />
+          </Key>
+          <Property Name="idMedicament" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraindications" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="idPatiens" />
+          </Key>
+          <Property Name="idPatiens" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rasp">
+          <Key>
+            <PropertyRef Name="idrasp" />
+          </Key>
+          <Property Name="idrasp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iddoc" Type="int" Nullable="false" />
+          <Property Name="Timestart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Timeend" Type="time" Precision="7" Nullable="false" />
+          <Property Name="weekday" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="day" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Registr">
+          <Key>
+            <PropertyRef Name="idRegistr" />
+          </Key>
+          <Property Name="idRegistr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPatient" Type="int" Nullable="false" />
+          <Property Name="iduserRegistr" Type="int" Nullable="false" />
+          <Property Name="date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idTypepay" Type="int" Nullable="false" />
+          <Property Name="idrasp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Typepay">
+          <Key>
+            <PropertyRef Name="idTypepay" />
+          </Key>
+          <Property Name="idTypepay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRegistr">
+          <Key>
+            <PropertyRef Name="iduserR" />
+          </Key>
+          <Property Name="iduserR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Doctors_cabin">
+          <End Role="cabin" Type="Self.cabin" Multiplicity="0..1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabin">
+              <PropertyRef Name="idcab" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="idcabin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="idisease" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idDisease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Medicament">
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicament">
+              <PropertyRef Name="idMedicament" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idMedicament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Registr">
+          <End Role="Registr" Type="Self.Registr" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registr">
+              <PropertyRef Name="idRegistr" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idregistr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasp_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Rasp" Type="Self.Rasp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="iddoctors" />
+            </Principal>
+            <Dependent Role="Rasp">
+              <PropertyRef Name="iddoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="idPatiens" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Rasp">
+          <End Role="Rasp" Type="Self.Rasp" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rasp">
+              <PropertyRef Name="idrasp" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idrasp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Typepay">
+          <End Role="Typepay" Type="Self.Typepay" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typepay">
+              <PropertyRef Name="idTypepay" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idTypepay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_UserRegistr">
+          <End Role="UserRegistr" Type="Self.UserRegistr" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRegistr">
+              <PropertyRef Name="iduserR" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="iduserRegistr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище registrGANModelContainer">
+          <EntitySet Name="cabin" EntityType="Self.cabin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disease" EntityType="Self.Disease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctorsappoin" EntityType="Self.Doctorsappoin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicament" EntityType="Self.Medicament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rasp" EntityType="Self.Rasp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registr" EntityType="Self.Registr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typepay" EntityType="Self.Typepay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegistr" EntityType="Self.UserRegistr" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Doctors_cabin" Association="Self.FK_Doctors_cabin">
+            <End Role="cabin" EntitySet="cabin" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Disease" Association="Self.FK_Doctorsappoin_Disease">
+            <End Role="Disease" EntitySet="Disease" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Medicament" Association="Self.FK_Doctorsappoin_Medicament">
+            <End Role="Medicament" EntitySet="Medicament" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Registr" Association="Self.FK_Doctorsappoin_Registr">
+            <End Role="Registr" EntitySet="Registr" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasp_Doctors" Association="Self.FK_Rasp_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Rasp" EntitySet="Rasp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Patients" Association="Self.FK_Registr_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Rasp" Association="Self.FK_Registr_Rasp">
+            <End Role="Rasp" EntitySet="Rasp" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Typepay" Association="Self.FK_Registr_Typepay">
+            <End Role="Typepay" EntitySet="Typepay" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_UserRegistr" Association="Self.FK_Registr_UserRegistr">
+            <End Role="UserRegistr" EntitySet="UserRegistr" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="registrGANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cabin">
+          <Key>
+            <PropertyRef Name="idcab" />
+          </Key>
+          <Property Name="idcab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numbercab" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_cabin" FromRole="cabin" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="idisease" />
+          </Key>
+          <Property Name="idisease" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Symptoms" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctorsappoin" Relationship="Self.FK_Doctorsappoin_Disease" FromRole="Disease" ToRole="Doctorsappoin" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="iddoctors" />
+          </Key>
+          <Property Name="iddoctors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idcabin" Type="Int32" />
+          <Property Name="Staj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cabin" Relationship="Self.FK_Doctors_cabin" FromRole="Doctors" ToRole="cabin" />
+          <NavigationProperty Name="Rasp" Relationship="Self.FK_Rasp_Doctors" FromRole="Doctors" ToRole="Rasp" />
+        </EntityType>
+        <EntityType Name="Doctorsappoin">
+          <Key>
+            <PropertyRef Name="iddoctorappoint" />
+          </Key>
+          <Property Name="iddoctorappoint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idregistr" Type="Int32" Nullable="false" />
+          <Property Name="Dateappoint" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idDisease" Type="Int32" Nullable="false" />
+          <Property Name="idMedicament" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Medicamentquantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disease" Relationship="Self.FK_Doctorsappoin_Disease" FromRole="Doctorsappoin" ToRole="Disease" />
+          <NavigationProperty Name="Medicament" Relationship="Self.FK_Doctorsappoin_Medicament" FromRole="Doctorsappoin" ToRole="Medicament" />
+          <NavigationProperty Name="Registr" Relationship="Self.FK_Doctorsappoin_Registr" FromRole="Doctorsappoin" ToRole="Registr" />
+        </EntityType>
+        <EntityType Name="Medicament">
+          <Key>
+            <PropertyRef Name="idMedicament" />
+          </Key>
+          <Property Name="idMedicament" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraindications" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctorsappoin" Relationship="Self.FK_Doctorsappoin_Medicament" FromRole="Medicament" ToRole="Doctorsappoin" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="idPatiens" />
+          </Key>
+          <Property Name="idPatiens" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Registr" Relationship="Self.FK_Registr_Patients" FromRole="Patients" ToRole="Registr" />
+        </EntityType>
+        <EntityType Name="Rasp">
+          <Key>
+            <PropertyRef Name="idrasp" />
+          </Key>
+          <Property Name="idrasp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iddoc" Type="Int32" Nullable="false" />
+          <Property Name="Timestart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Timeend" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="weekday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Rasp_Doctors" FromRole="Rasp" ToRole="Doctors" />
+          <NavigationProperty Name="Registr" Relationship="Self.FK_Registr_Rasp" FromRole="Rasp" ToRole="Registr" />
+        </EntityType>
+        <EntityType Name="Registr">
+          <Key>
+            <PropertyRef Name="idRegistr" />
+          </Key>
+          <Property Name="idRegistr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPatient" Type="Int32" Nullable="false" />
+          <Property Name="iduserRegistr" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idTypepay" Type="Int32" Nullable="false" />
+          <Property Name="idrasp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctorsappoin" Relationship="Self.FK_Doctorsappoin_Registr" FromRole="Registr" ToRole="Doctorsappoin" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Registr_Patients" FromRole="Registr" ToRole="Patients" />
+          <NavigationProperty Name="Rasp" Relationship="Self.FK_Registr_Rasp" FromRole="Registr" ToRole="Rasp" />
+          <NavigationProperty Name="Typepay" Relationship="Self.FK_Registr_Typepay" FromRole="Registr" ToRole="Typepay" />
+          <NavigationProperty Name="UserRegistr" Relationship="Self.FK_Registr_UserRegistr" FromRole="Registr" ToRole="UserRegistr" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Typepay">
+          <Key>
+            <PropertyRef Name="idTypepay" />
+          </Key>
+          <Property Name="idTypepay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Registr" Relationship="Self.FK_Registr_Typepay" FromRole="Typepay" ToRole="Registr" />
+        </EntityType>
+        <EntityType Name="UserRegistr">
+          <Key>
+            <PropertyRef Name="iduserR" />
+          </Key>
+          <Property Name="iduserR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Registr" Relationship="Self.FK_Registr_UserRegistr" FromRole="UserRegistr" ToRole="Registr" />
+        </EntityType>
+        <Association Name="FK_Doctors_cabin">
+          <End Role="cabin" Type="Self.cabin" Multiplicity="0..1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabin">
+              <PropertyRef Name="idcab" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="idcabin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="idisease" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idDisease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasp_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Rasp" Type="Self.Rasp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="iddoctors" />
+            </Principal>
+            <Dependent Role="Rasp">
+              <PropertyRef Name="iddoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Medicament">
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicament">
+              <PropertyRef Name="idMedicament" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idMedicament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctorsappoin_Registr">
+          <End Role="Registr" Type="Self.Registr" Multiplicity="1" />
+          <End Role="Doctorsappoin" Type="Self.Doctorsappoin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registr">
+              <PropertyRef Name="idRegistr" />
+            </Principal>
+            <Dependent Role="Doctorsappoin">
+              <PropertyRef Name="idregistr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="idPatiens" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Rasp">
+          <End Role="Rasp" Type="Self.Rasp" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rasp">
+              <PropertyRef Name="idrasp" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idrasp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_Typepay">
+          <End Role="Typepay" Type="Self.Typepay" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typepay">
+              <PropertyRef Name="idTypepay" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="idTypepay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registr_UserRegistr">
+          <End Role="UserRegistr" Type="Self.UserRegistr" Multiplicity="1" />
+          <End Role="Registr" Type="Self.Registr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRegistr">
+              <PropertyRef Name="iduserR" />
+            </Principal>
+            <Dependent Role="Registr">
+              <PropertyRef Name="iduserRegistr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="registrGANEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cabin" EntityType="Self.cabin" />
+          <EntitySet Name="Disease" EntityType="Self.Disease" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="Doctorsappoin" EntityType="Self.Doctorsappoin" />
+          <EntitySet Name="Medicament" EntityType="Self.Medicament" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" />
+          <EntitySet Name="Rasp" EntityType="Self.Rasp" />
+          <EntitySet Name="Registr" EntityType="Self.Registr" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Typepay" EntityType="Self.Typepay" />
+          <EntitySet Name="UserRegistr" EntityType="Self.UserRegistr" />
+          <AssociationSet Name="FK_Doctors_cabin" Association="Self.FK_Doctors_cabin">
+            <End Role="cabin" EntitySet="cabin" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Disease" Association="Self.FK_Doctorsappoin_Disease">
+            <End Role="Disease" EntitySet="Disease" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasp_Doctors" Association="Self.FK_Rasp_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Rasp" EntitySet="Rasp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Medicament" Association="Self.FK_Doctorsappoin_Medicament">
+            <End Role="Medicament" EntitySet="Medicament" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctorsappoin_Registr" Association="Self.FK_Doctorsappoin_Registr">
+            <End Role="Registr" EntitySet="Registr" />
+            <End Role="Doctorsappoin" EntitySet="Doctorsappoin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Patients" Association="Self.FK_Registr_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Rasp" Association="Self.FK_Registr_Rasp">
+            <End Role="Rasp" EntitySet="Rasp" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_Typepay" Association="Self.FK_Registr_Typepay">
+            <End Role="Typepay" EntitySet="Typepay" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registr_UserRegistr" Association="Self.FK_Registr_UserRegistr">
+            <End Role="UserRegistr" EntitySet="UserRegistr" />
+            <End Role="Registr" EntitySet="Registr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище registrGANModelContainer" CdmEntityContainer="registrGANEntities">
+          <EntitySetMapping Name="cabin">
+            <EntityTypeMapping TypeName="registrGANModel.cabin">
+              <MappingFragment StoreEntitySet="cabin">
+                <ScalarProperty Name="idcab" ColumnName="idcab" />
+                <ScalarProperty Name="numbercab" ColumnName="numbercab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disease">
+            <EntityTypeMapping TypeName="registrGANModel.Disease">
+              <MappingFragment StoreEntitySet="Disease">
+                <ScalarProperty Name="idisease" ColumnName="idisease" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="registrGANModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="iddoctors" ColumnName="iddoctors" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="idcabin" ColumnName="idcabin" />
+                <ScalarProperty Name="Staj" ColumnName="Staj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctorsappoin">
+            <EntityTypeMapping TypeName="registrGANModel.Doctorsappoin">
+              <MappingFragment StoreEntitySet="Doctorsappoin">
+                <ScalarProperty Name="iddoctorappoint" ColumnName="iddoctorappoint" />
+                <ScalarProperty Name="idregistr" ColumnName="idregistr" />
+                <ScalarProperty Name="Dateappoint" ColumnName="Dateappoint" />
+                <ScalarProperty Name="idDisease" ColumnName="idDisease" />
+                <ScalarProperty Name="idMedicament" ColumnName="idMedicament" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Medicamentquantity" ColumnName="Medicamentquantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicament">
+            <EntityTypeMapping TypeName="registrGANModel.Medicament">
+              <MappingFragment StoreEntitySet="Medicament">
+                <ScalarProperty Name="idMedicament" ColumnName="idMedicament" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Contraindications" ColumnName="Contraindications" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="registrGANModel.Patients">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="idPatiens" ColumnName="idPatiens" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rasp">
+            <EntityTypeMapping TypeName="registrGANModel.Rasp">
+              <MappingFragment StoreEntitySet="Rasp">
+                <ScalarProperty Name="idrasp" ColumnName="idrasp" />
+                <ScalarProperty Name="iddoc" ColumnName="iddoc" />
+                <ScalarProperty Name="Timestart" ColumnName="Timestart" />
+                <ScalarProperty Name="Timeend" ColumnName="Timeend" />
+                <ScalarProperty Name="weekday" ColumnName="weekday" />
+                <ScalarProperty Name="day" ColumnName="day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registr">
+            <EntityTypeMapping TypeName="registrGANModel.Registr">
+              <MappingFragment StoreEntitySet="Registr">
+                <ScalarProperty Name="idRegistr" ColumnName="idRegistr" />
+                <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+                <ScalarProperty Name="iduserRegistr" ColumnName="iduserRegistr" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="idTypepay" ColumnName="idTypepay" />
+                <ScalarProperty Name="idrasp" ColumnName="idrasp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="registrGANModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typepay">
+            <EntityTypeMapping TypeName="registrGANModel.Typepay">
+              <MappingFragment StoreEntitySet="Typepay">
+                <ScalarProperty Name="idTypepay" ColumnName="idTypepay" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegistr">
+            <EntityTypeMapping TypeName="registrGANModel.UserRegistr">
+              <MappingFragment StoreEntitySet="UserRegistr">
+                <ScalarProperty Name="iduserR" ColumnName="iduserR" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="PojectGANkurs.windowfolder.Raspisanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PojectGANkurs.windowfolder"
+        mc:Ignorable="d"
+        Title="Raspisanie" Height="500" Width="950" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Имя доктора" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <TextBox x:Name="firsname" Grid.Column="1"  Width="145" Height="30"/>
+            <TextBlock Text="фамилия доктора" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <TextBox x:Name="lasname" Grid.Column="1"  Width="145" Height="30"/>
+            <TextBlock Text="День недели" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <ComboBox x:Name="weeklist" Width="145" Height="30">
+                <ComboBoxItem>
+                    Понедельник
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Вторник
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Среда
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Четверг
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Пятница
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Суббота
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Воскресенье
+                </ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btn1" Content="Сортировать" Grid.Column="1" Click="btn1_Click" Width="145" Height="30"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btn3" Content="Сброс расписания" Grid.Column="1" Width="145" Height="30" Click="btn3_Click" />
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btn2" Content="Информация о пациентах" Grid.Column="1" Width="145" Height="30" Click="btn2_Click"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btn4" Content="Информация о Докторах" Grid.Column="1" Width="145" Height="30" Click="btn4_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="gridtable" AutoGenerateColumns="False" SelectionChanged="gridtable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding day}" Header="Дата" />
+                <DataGridTextColumn Binding="{Binding weekday}" Header="День недели" />
+                <DataGridTextColumn Binding="{Binding Doctors.Role}" Header="Специальность"/>
+                <DataGridTextColumn Binding="{Binding Doctors.FirstName}" Header="Имя"  />
+                <DataGridTextColumn Binding="{Binding Doctors.LastName}" Header="Фамилия" />
+                <DataGridTextColumn Binding="{Binding Timestart}" Header="Время начало приема" />
+                <DataGridTextColumn Binding="{Binding Timeend}" Header="Время окончание приема" />
+                <DataGridTextColumn Binding="{Binding Doctors.cabin.numbercab}" Header="Кабинет" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btndrpc" Content="Оформить запись" Width="150" Height="33" Click="btndrpc_Click"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="10" Height="33"/>
+            <Button x:Name="btnsdrpc" Content="Найти запись" Width="150" Height="33" Click="btnsdrpc_Click"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="10" Height="33"/>
+            <Button x:Name="btnsddas" Content="Информация по приему" Width="150" Height="33" Click="btnsddas_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="PojectGANkurs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PojectGANkurs"
+        mc:Ignorable="d"
+            Title="MainWindow" Height="200" Width="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Логин" Name="Loginbox" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Пароль" Name="Passwordbox" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="Passwordtxt" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"/>
+        <TextBox Text="" Name="Logintxt" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="20"/>
+        <Button x:Name="autorizate" Content="Авторизоватся" Grid.Column="1"  Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="20" Click="autorizate_Click"/>
+ </Grid>
+</Window>

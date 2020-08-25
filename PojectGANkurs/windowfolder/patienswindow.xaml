@@ -1,0 +1,45 @@
+﻿<Window x:Class="PojectGANkurs.windowfolder.patienswindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PojectGANkurs.windowfolder"
+        mc:Ignorable="d"
+        Title="patienswindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Добавить пациента" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btnadd" Content="Добавление" Grid.Column="1"  Width="145" Height="30" Click="btnadd_Click"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="20"/>
+            <TextBlock Text="Изменнение информации" Grid.Column="1" TextAlignment="Center" Width="145" Height="30"/>
+            <Button Name="btnupdate" Content="Изменение" Grid.Column="1"  Width="145" Height="30" Click="btnupdate_Click" />
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="20"/>
+            <TextBlock Text="Удалить пациента" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <Button Name="btn1" Content="Удаление" Grid.Column="1" Click="btn1_Click" Width="145" Height="30"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="20"/>
+            <TextBlock Text="Имя пациента" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <TextBox x:Name="firsname" Grid.Column="1"  Width="145" Height="30"/>
+            <TextBlock Text="фамилия пациента" Grid.Column="1" TextAlignment="Center"  Width="145" Height="30"/>
+            <TextBox x:Name="lasname" Grid.Column="1"  Width="145" Height="30"/>
+            <TextBlock Text="" Grid.Column="1" TextAlignment="Center"  Width="145" Height="20"/>
+            <Button Name="btn3" Content="Найти Пациента" Grid.Column="1" Width="145" Height="30" Click="btn3_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="gridtable" AutoGenerateColumns="False" SelectionChanged="gridtable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" />
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding MiddleName}" Header="Отчество"  />
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" />
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email" />
+                <DataGridTextColumn Binding="{Binding Adress}" Header="Адресс" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
